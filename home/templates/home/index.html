@@ -28,9 +28,5 @@
 {% endblock %}
 
 {% block postloadjs %}
-    <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('subscription-banner').style.display = 'none';
-        };
-    </script>
+    <script src="{% static 'js/subscription_banner.js' %}"></script>
 {% endblock %}

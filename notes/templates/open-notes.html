@@ -1,0 +1,44 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% for doc in documents %}
+        {% if doc.id == docid %}
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-7 col-md-6 my-auto">
+                        <h1 class="display-4 logo-font text-black">
+                            {{ doc.title }}
+                        </h1>
+                    </div>
+                </div>
+                <div class="col">
+                    <form method="post" action="{% url 'notes' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="docid" value="{{ docid }}">
+                        <!--<div class="form-group">
+                            <label for="title" class="text-warning">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Title{% if document %}value='{{ document.title }}'{% endif %}">
+                        </div>-->
+                        <div class="form-group">
+                            <label for="content" class="text-warning">Content</label>
+                            <textarea readonly class="form-control text-black overflow-auto" id="content" placeholder="{{ doc.content }}" cols="30" rows="80"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-warning text-black">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
