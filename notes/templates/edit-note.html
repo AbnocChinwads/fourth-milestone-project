@@ -30,7 +30,7 @@
                             <textarea readonly class="form-control text-black overflow-auto" id="content" placeholder="{{ doc.content }}" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group">
-                            <a href="{% url 'edit-note' %}" type="submit" class="btn btn-warning text-black">Edit</a>
+                            <a href="{% url 'notes' %}" type="submit" class="btn btn-warning text-black">Save</a>
                             <a href="{% url 'delete-note' document.id %}" type="submit" class="btn btn-danger text-black">Delete</a>
                         </div>
                     </form>
