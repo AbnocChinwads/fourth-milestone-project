@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Document
+from .forms import DocumentForm
 
 
 def view_notes(request, docid):
@@ -23,18 +24,18 @@ def view_notes(request, docid):
 
 def add_note(request):
     """ A view to create a new document """
-    docid = request.GET.get('docid')
-    documents = Document.objects.all()
-    """ document input from webpage """
-    # document.save()
+    if request.method == 'POST':
+        form = DocumentForm(request.POST)
 
-    context = {
-        'docid': docid,
-        'documents': documents,
-        # 'document': document,
-    }
+        if form.is_valid:
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            document = Document(title=title, content=content)
+            document.save()
+    else:
+        form = Document()
 
-    return render(request, 'add-notes.html', context)
+    return render(request, 'add-notes.html', {'form': form})
 
 # Read
 

@@ -10,4 +10,4 @@ class Document(models.Model):
         ordering = ('id',)
 
     def __str__(self):
-        return self.__str__()
+        return self.title
