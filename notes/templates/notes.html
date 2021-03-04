@@ -23,15 +23,19 @@
             <div class="col-2">
                 <p>Documents</p>
                 <ul>
-                    {% for doc in documents %}
-                        <li>
-                            <a href="{% url 'open-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
-                                {{ doc.title }}
-                            </a>
-                        </li>
-                    {% endfor %}
+                    {% if docid %}
+                        {% for doc in documents %}
+                            <li>
+                                <a href="{% url 'open-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                                    {{ doc.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                            <p class="logo-font font-weight-bold nav-link text-warning mr-5">No documents available</p>
+                    {% endif %}
                 </ul>
-                <a href="{% url 'add-notes' %}?docid=0" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                <a href="{% url 'add-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                     <i class="fas fa-file-alt"></i> New document
                 </a>
             </div>

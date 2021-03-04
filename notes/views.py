@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Document
 from .forms import DocumentForm
 
 
-def view_notes(request, docid):
+def view_notes(request):
     """
     A view to show all campaign notes for the user,
     including sorting and search queries
@@ -25,7 +25,7 @@ def view_notes(request, docid):
 def add_note(request):
     """ A view to create a new document """
     if request.method == 'POST':
-        form = DocumentForm(request.POST)
+        form = DocumentForm(request.POST.get)
 
         if form.is_valid:
             title = form.cleaned_data['title']
@@ -42,7 +42,7 @@ def add_note(request):
 
 def open_note(request, docid):
     """ A view to show the currently open document """
-    docid = request.GET.get('docid')
+    docid = get_object_or_404(Document, pk=docid)
     documents = Document.objects.all(pk=docid)
 
     context = {
@@ -64,7 +64,7 @@ def update_note():
 
 def delete_note(request, docid):
     """ A view to delete the currently open document """
-    document = Document.objects.get(pk=docid)
+    document = get_object_or_404(Document, pk=docid)
     document.delete()
 
     return redirect('notes')

@@ -13,5 +13,5 @@ form = DocumentForm()
 
 
 # Creating a form to change an existing document
-document = Document.objects.get(pk=1)
-form = DocumentForm(instance=document)
+# document = Document.objects.get(pk=1)
+# form = DocumentForm(instance=document)

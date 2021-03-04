@@ -1,0 +1,30 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-7 col-md-6 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    Crit Fail!
+                </h1>
+                <h2 class="display-4 logo-font text-black">
+                    The page you are looking for could not be reached
+                    <br>Roll again and may RNGesus be with you!
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <img src="nat_1.jpg" alt="Natural One">
+        </div>
+    </div>
+{% endblock %}
