@@ -23,7 +23,7 @@
             <div class="col-2">
                 <p>Documents</p>
                 <ul>
-                    {% if docid %}
+                    {% if documents %}
                         {% for doc in documents %}
                             <li>
                                 <a href="{% url 'open-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
