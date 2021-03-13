@@ -9,7 +9,7 @@ def view_notes(request):
     A view to show all campaign notes for the user,
     including sorting and search queries
     """
-    docid = request.GET.get('docid')
+    docid = request.POST.get('docid')
     documents = Document.objects.all()
 
     context = {
@@ -40,9 +40,9 @@ def add_note(request):
 # Read
 
 
-def open_note(request, docid):
+def open_note(request):
     """ A view to show the currently open document """
-    docid = get_object_or_404(Document, pk=docid)
+    docid = get_object_or_404(Document, pk=id)
     documents = Document.objects.all(pk=docid)
 
     context = {

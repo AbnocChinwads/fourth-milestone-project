@@ -21,19 +21,18 @@
         </div>
         <div class="row">
             <div class="col-2">
-                <p>Documents</p>
-                <ul>
-                    {% if documents %}
-                        {% for doc in documents %}
+                <ul class="logo-font font-weight-bold nav-link text-warning mr-5">
+                    {% for doc in documents %}
+                        {% if doc.id %}    
                             <li>
                                 <a href="{% url 'open-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                                     {{ doc.title }}
                                 </a>
                             </li>
-                        {% endfor %}
-                    {% else %}
+                        {% else %}
                             <p class="logo-font font-weight-bold nav-link text-warning mr-5">No documents available</p>
-                    {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </ul>
                 <a href="{% url 'add-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                     <i class="fas fa-file-alt"></i> New document
