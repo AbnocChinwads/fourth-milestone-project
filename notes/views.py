@@ -40,7 +40,7 @@ def add_note(request):
 # Read
 
 
-def open_note(request):
+def open_note(request, docid):
     """ A view to show the currently open document """
     docid = get_object_or_404(Document, pk=id)
     documents = Document.objects.all(pk=docid)
@@ -55,9 +55,20 @@ def open_note(request):
 # Update
 
 
-def update_note():
+def update_note(request):
     """ A view to update the currently open document """
-    return redirect('notes')
+    if request.method == 'POST':
+        form = DocumentForm(request.POST.get)
+
+        if form.is_valid:
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            document = Document(title=title, content=content)
+            document.save()
+    else:
+        form = Document()
+
+    return redirect(request, 'notes.html', {'form': form})
 
 # Delete
 
@@ -67,4 +78,4 @@ def delete_note(request, docid):
     document = get_object_or_404(Document, pk=docid)
     document.delete()
 
-    return redirect('notes')
+    return redirect('notes.html')
