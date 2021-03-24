@@ -43,7 +43,7 @@ def add_note(request):
 def open_note(request, docid):
     """ A view to show the currently open document """
     docid = get_object_or_404(Document, pk=docid)
-    documents = Document.objects.all(pk=docid)
+    documents = Document.objects.all()
 
     context = {
         'docid': docid,

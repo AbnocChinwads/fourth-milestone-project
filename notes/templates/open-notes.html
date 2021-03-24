@@ -12,19 +12,20 @@
 
 {% block content %}
     {% for doc in documents %}
-        {% if doc.id == docid %}
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-7 col-md-6 my-auto">
-                        <h1 class="display-4 logo-font text-black">
-                            {{ doc.title }}
-                        </h1>
+        {% if docid == doc.id %}
+            <form method="POST" action="{% url 'notes' %}">
+                {% csrf_token %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-7 col-md-6 my-auto">
+                            <h1 class="display-4 logo-font text-black">
+                                {{ doc.title }}
+                            </h1>
+                        </div>
                     </div>
                 </div>
                 <div class="col">
-                    <form method="POST" action="{% url 'notes' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="docid" value="{{ docid }}">
+                    <input type="hidden" name="docid" value="{{ docid }}">
                         <div class="form-group">
                             <label for="content" class="text-warning">Content</label>
                             <textarea readonly class="form-control text-black overflow-auto" id="content" placeholder="{{ doc.content }}" cols="30" rows="10"></textarea>
@@ -33,9 +34,8 @@
                             <a href="{% url 'edit-note' %}?docid={{ doc.id }}" type="submit" class="btn btn-warning text-black">Edit</a>
                             <a href="{% url 'delete-note' %}?docid={{ doc.id }}" type="submit" class="btn btn-danger text-black">Delete</a>
                         </div>
-                    </form>
                 </div>
-            </div>
+            </form>
         {% endif %}
     {% endfor %}
 {% endblock %}

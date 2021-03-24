@@ -25,7 +25,7 @@
                     {% for doc in documents %}
                         {% if doc.id %}    
                             <li>
-                                <a href="{% url 'open-notes' %}?docid={{ doc.id }}" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                                <a href="{% url 'open-notes' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                                     {{ doc.title }}
                                 </a>
                             </li>
