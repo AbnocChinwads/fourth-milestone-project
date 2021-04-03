@@ -12,7 +12,7 @@
 
 {% block content %}
     {% for doc in documents %}
-        {% if docid == doc.id %}
+        {% if docid == docid %}
             <form method="POST" action="{% url 'notes' %}">
                 {% csrf_token %}
                 <div class="container-fluid">
