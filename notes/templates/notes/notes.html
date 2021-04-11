@@ -1,0 +1,41 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-7 col-md-6 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    Campaign Notes
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                {% for doc in documents %}
+                    <ul class="logo-font font-weight-bold nav-link text-warning mr-5">   
+                        <li>
+                            <a href="#" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                                {{ doc.title }}
+                            </a>
+                        </li>
+                    </ul>
+                {% empty %}
+                    <p class="logo-font font-weight-bold text-warning mr-5">No saved notes</p>
+                {% endfor %}
+                <a href="{% url 'add_notes' %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                    <i class="fas fa-file-alt"></i> Start your journey!
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

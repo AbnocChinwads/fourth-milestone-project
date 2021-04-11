@@ -1,0 +1,47 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-7 col-md-6 my-auto">
+                <h1 class="display-4 logo-font text-black">
+                    New document
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="{% url 'add_notes' %}">
+                    {% csrf_token %}
+                    <div>
+                        <p>
+                            <label for="id_title" class="text-warning">Title</label>
+                            <input type="text" class="form-control" id="id_title" name="document_title" placeholder="Title">
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <label for="id_content" class="text-warning">Content</label>
+                            <textarea class="form-control" id="id_content" name="document_content" placeholder="Content" cols="30" rows="10"></textarea>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <button href="{% url 'view_notes' %}" type="submit" class="btn btn-warning text-black">Save</button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
