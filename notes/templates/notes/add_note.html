@@ -1,0 +1,29 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="{% url 'add_notes' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div>
+                        <p>
+                            <button type="submit" class="btn btn-warning text-black">Save</button>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
