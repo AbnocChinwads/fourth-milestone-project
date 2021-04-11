@@ -30,6 +30,9 @@
                             <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                                 <button>Edit</button>
                             </a>
+                            <a href="{% url 'delete_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                                <button>Delete</button>
+                            </a>
                         </li>
                     </ul>
                 {% empty %}

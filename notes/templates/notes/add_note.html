@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <form method="POST" action="{% url 'add_notes' %}">
+                <form method="POST" action="{% url 'add_note' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div>

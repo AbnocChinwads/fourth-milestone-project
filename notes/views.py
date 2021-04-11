@@ -31,7 +31,7 @@ def add_note(request):
     context = {
         'form': form
     }
-    return render(request, 'notes/add_notes.html', context)
+    return render(request, 'notes/add_note.html', context)
 
 
 def edit_note(request, document_id):
@@ -46,3 +46,9 @@ def edit_note(request, document_id):
         'form': form
     }
     return render(request, 'notes/edit_note.html', context)
+
+
+def delete_note(request, document_id):
+    document = get_object_or_404(Document, id=document_id)
+    document.delete()
+    return redirect('view_notes')
