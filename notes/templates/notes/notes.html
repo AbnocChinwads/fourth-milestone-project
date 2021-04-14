@@ -20,11 +20,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col">
                 {% for doc in documents %}
-                    <ul class="logo-font font-weight-bold nav-link text-warning mr-5">   
+                    <ul class="logo-font font-weight-bold nav-link text-warning mr-5 list-unstyled">   
                         <li>
-                            <a href="" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                            <a href="{% url 'open_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
                                 {{ doc.title }}
                             </a>
                             <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
