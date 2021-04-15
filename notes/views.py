@@ -34,20 +34,6 @@ def add_note(request):
     return render(request, 'notes/add_note.html', context)
 
 
-def open_note(request, document_id):
-    document = get_object_or_404(Document, id=document_id)
-    """if request.method == 'POST':
-        form = DocumentForm(request.POST, instance=document)
-        if form.is_valid():
-            form.save()
-            return redirect('view_notes')"""
-    form = DocumentForm(instance=document)
-    context = {
-        'form': form
-    }
-    return render(request, 'notes/open_note.html', context)
-
-
 def edit_note(request, document_id):
     document = get_object_or_404(Document, id=document_id)
     if request.method == 'POST':
