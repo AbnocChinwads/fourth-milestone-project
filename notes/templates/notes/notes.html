@@ -21,23 +21,27 @@
         </div>
         <div class="row">
             <div class="col">
-                {% for doc in documents %}
-                    <ul class="logo-font font-weight-bold nav-link text-warning mr-5 list-unstyled">   
+                    <ul class="logo-font font-weight-bold nav-link text-warning mr-5 list-unstyled">
+                        {% for doc in documents %}   
                         <li>
                             {{ doc.title }}
-                            <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
-                                <button class="btn btn-warning text-light"><i class="fas fa-pen-square"></i></button>
+                            <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold text-warning ml-5 mr-5">
+                                <button class="btn btn-warning btn-outline-dark text-light"><i class="fas fa-pen-square"></i></button>
                             </a>
-                            <a href="{% url 'delete_note' doc.id %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
+                            <a href="{% url 'delete_note' doc.id %}" class="logo-font font-weight-bold text-warning ml-5 mr-5">
                                 <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </a>
                         </li>
-                    </ul>
-                {% empty %}
+                        {% empty %}
                     <p class="logo-font font-weight-bold text-warning mr-5">No saved notes</p>
                 {% endfor %}
+                    </ul>
                 <a href="{% url 'add_note' %}" class="logo-font font-weight-bold nav-link text-warning mr-5">
-                    <i class="fas fa-file-alt"></i> Start your journey!
+                    {% if documents %}
+                        <i class="fas fa-file-alt"></i> New note
+                    {% else %}
+                        <i class="fas fa-file-alt"></i> Start your journey!
+                    {% endif %}
                 </a>
             </div>
         </div>
