@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+DEBUG = 'DEVELOPMENT' in os.environ
 
 if development:
     ALLOWED_HOSTS = ['localhost']
@@ -49,6 +49,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'notes',
+    'profiles',
+
+    # Other
+    'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
