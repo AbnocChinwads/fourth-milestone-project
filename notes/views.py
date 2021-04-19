@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
 
 from .models import Document
 from .forms import DocumentForm
@@ -26,6 +27,7 @@ def add_note(request):
         form = DocumentForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Document successfully saved')
             return redirect('view_notes')
     form = DocumentForm()
     context = {
@@ -40,6 +42,7 @@ def edit_note(request, document_id):
         form = DocumentForm(request.POST, instance=document)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Document successfully updated')
             return redirect('view_notes')
     form = DocumentForm(instance=document)
     context = {
@@ -51,4 +54,5 @@ def edit_note(request, document_id):
 def delete_note(request, document_id):
     document = get_object_or_404(Document, id=document_id)
     document.delete()
+    messages.warning(request, 'Document deleted')
     return redirect('view_notes')
