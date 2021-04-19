@@ -10,6 +10,7 @@ def view_notes(request):
     A view to show all campaign notes for the user,
     including sorting and search queries
     """
+    # documents = get_object_or_404(Document, pk=doc)
     documents = Document.objects.all()
 
     context = {
@@ -37,12 +38,13 @@ def add_note(request):
 
 
 def edit_note(request, document_id):
-    document = get_object_or_404(Document, id=document_id)
+    document = get_object_or_404(Document, pk=document_id)
     if request.method == 'POST':
         form = DocumentForm(request.POST, instance=document)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Document successfully updated')
+            messages.success(request,
+                             'Document successfully updated')
             return redirect('view_notes')
     form = DocumentForm(instance=document)
     context = {
@@ -52,7 +54,7 @@ def edit_note(request, document_id):
 
 
 def delete_note(request, document_id):
-    document = get_object_or_404(Document, id=document_id)
+    document = get_object_or_404(Document, pk=document_id)
     document.delete()
     messages.warning(request, 'Document deleted')
     return redirect('view_notes')
