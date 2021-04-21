@@ -24,4 +24,6 @@ urlpatterns = [
     path('', include('home.urls')),
     path('notes/', include('notes.urls')),
     path('profiles/', include('profiles.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('stripe/', include('djstripe.urls', namespace='djstripe')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

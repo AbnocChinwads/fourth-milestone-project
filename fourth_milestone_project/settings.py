@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # Other
     'crispy_forms',
+    'djstripe',
 ]
 
 MIDDLEWARE = [
@@ -194,10 +195,13 @@ if 'USE_AWS' in os.environ:
 
 
 # Stripe
+STRIPE_LIVE_MODE = False
 STRIPE_CURRENCY = 'gbp'
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+STRIPE_TEST_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
+STRIPE_TEST_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+DJSTRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WH_SECRET', '')
+DJSTRIPE_USE_NATIVE_JSONFIELD = True
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = 'id'
 
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
