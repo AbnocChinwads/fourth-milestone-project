@@ -67,7 +67,7 @@ def create_sub(request):
         except Exception as e:
             return JsonResponse({'error': (e.args[0])}, status=403)
     else:
-        return HttpResponse('requet method not allowed')
+        return HttpResponse('request method not allowed')
 
 
 def complete(request):
