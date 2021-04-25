@@ -3,14 +3,14 @@
 
 {% block content %}
 
-
+{% csrf_token %}
 <div class="container text-center">
 <br><br><br><br>
 <h3>Your subscription is now active!</h3>
 <br><br>
-<a class="btn btn-primary text-light" href="/">Return Home</a>
+<a class="btn btn-primary text-light" href="{% url 'home' %}">Return Home</a>
 <br><br>
-<a class="btn btn-danger text-light" href="/cancel">Cancel Subscription</a>
+<a class="btn btn-danger text-light" href="{% url 'cancel' %}">Cancel Subscription</a>
 </div>
 
 {% endblock %}

@@ -3,7 +3,7 @@ document.getElementById("submit").disabled = true;
 stripeElements();
 
 function stripeElements() {
-    var stripe = Stripe('STRIPE_TEST_PUBLIC_KEY');
+    var stripe = Stripe('pk_test_51HjmKKI9votNfXXUTALBiIvSzC46v2Fvz1Sn6DZOH65IbY5EtBQ98HFFO4Gdl9yBZzEjd7T6Ex7urlr0rgwTNAAF00PkFcCPWK');
 
     if (document.getElementById('card-element')) {
         let elements = stripe.elements();
@@ -78,7 +78,7 @@ function stripeElements() {
                         price_id: document.getElementById("priceId").innerHTML,
                         payment_method: result.paymentMethod.id,
                     };
-                    fetch("/create-sub", {
+                    fetch("{% url 'create_sub' %}", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ function stripeElements() {
                     }).then((result) => {
                         if (result && result.status === 'active') {
 
-                            window.location.href = '/complete';
+                            window.location.href = "{% url 'complete' %}";
                         };
                     }).catch(function (error) {
                         displayError(result.error.message);

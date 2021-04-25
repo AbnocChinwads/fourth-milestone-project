@@ -20,7 +20,7 @@ def create_sub(request):
         # Reads application/json and returns a response
         data = json.loads(request.body)
         payment_method = data['payment_method']
-        stripe.api_key = djstripe.settings.STRIPE_SECRET_KEY
+        stripe.api_key = djstripe.settings.STRIPE_TEST_SECRET_KEY
 
         payment_method_obj = stripe.PaymentMethod.retrieve(payment_method)
         djstripe.models.PaymentMethod.sync_from_stripe_data(payment_method_obj)
@@ -78,7 +78,7 @@ def cancel(request):
     if request.user.is_authenticated:
         sub_id = request.user.subscription.id
 
-        stripe.api_key = djstripe.settings.STRIPE_SECRET_KEY
+        stripe.api_key = djstripe.settings.STRIPE_TEST_SECRET_KEY
 
         try:
             stripe.Subscription.delete(sub_id)
