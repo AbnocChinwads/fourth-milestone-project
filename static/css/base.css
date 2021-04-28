@@ -10,6 +10,14 @@ body {
     font-family: 'Lato';
 }
 
+.container-fluid {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  
+  backdrop-filter: blur(10px);
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
@@ -87,7 +95,7 @@ body {
 }
 
 .toast-capper {
-    height: 2px;
+    height: 5px;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */

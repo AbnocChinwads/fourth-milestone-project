@@ -2,6 +2,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/notes.css' %}">
+{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -25,7 +29,7 @@
                         {% for doc in documents %}   
                         <li>
                             {{ doc.title }}
-                            <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold text-warning ml-5 mr-5">
+                            <a href="{% url 'edit_note' doc.id %}" class="logo-font font-weight-bold text-warning ml-5">
                                 <button class="btn btn-warning btn-outline-dark text-light"><i class="fas fa-pen-square"></i></button>
                             </a>
                             <a href="{% url 'delete_note' doc.id %}" class="logo-font font-weight-bold text-warning ml-5 mr-5">
