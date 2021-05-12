@@ -78,7 +78,7 @@ function stripeElements() {
                         price_id: document.getElementById("priceId").innerHTML,
                         payment_method: result.paymentMethod.id,
                     };
-                    fetch("{% url 'create_sub' %}", {
+                    fetch('create-sub', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
