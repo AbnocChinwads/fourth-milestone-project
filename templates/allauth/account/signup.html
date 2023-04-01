@@ -16,7 +16,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col logo-font font-weight-bold nav-link text-warning">
+        <div class="col logo-font font-weight-bold nav-link text-warning margin-off">
             <h1>{% trans "Sign Up" %}</h1>
 
             <p>{% blocktrans %}Already have an account? Then please <a class="logo-font font-weight-bold text-black" href="{{ login_url }}">sign
@@ -28,7 +28,7 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+                <button type="submit" class="btn btn-outline-dark">{% trans "Sign Up" %} &raquo;</button>
             </form>
         </div>
     </div>

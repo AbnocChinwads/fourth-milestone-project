@@ -18,6 +18,10 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.margin-off {
+    margin: 2rem;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
